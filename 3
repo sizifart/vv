@@ -1,0 +1,1734 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "secret": "",
+      "external_ui_download_url": "https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "default_mode": "rule"
+    },
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": false
+    }
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxyDns",
+        "address": "tls://8.8.8.8",
+        "detour": "Proxy"
+      },
+      {
+        "tag": "localDns",
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "domain": [
+          "cdn.jsdelivr.net"
+        ],
+        "server": "proxyDns"
+      },
+      {
+        "outbound": "any",
+        "server": "localDns"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "global",
+        "server": "proxyDns"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "proxyDns"
+      }
+    ],
+    "final": "localDns",
+    "strategy": "ipv4_only"
+  },
+  "inbounds": [
+    {
+      "tag": "tun-in",
+      "type": "tun",
+      "address": [
+        "172.19.0.0/30"
+      ],
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "system",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      }
+    },
+    {
+      "tag": "mixed-in",
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 2080
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "Proxy",
+      "type": "selector",
+      "outbounds": [
+        "auto",
+        "direct",
+        "🇩🇪 Tunnel Germany 1",
+        "🇩🇪 Tunnel Germany 2",
+        "🇳🇱 Tunnel Netherlands 1",
+        "🇳🇱 Tunnel Netherlands 2",
+        " 🇩🇪 1 آلمان کل اپراتور 🟢",
+        " 🇩🇪 2 آلمان کل اپراتور 🟢 (helenaloveyou)",
+        "🇬🇧 2 انگلیس کل اپراتور 🟢",
+        "🇳🇱 1 هلند کل اپراتور 🟢",
+        " 🇩🇪 3 آلمان کل اپراتور 🟢",
+        "🇩🇪  💎 کل اپراتور🟢 | آلمان ویژه  | (helenaloveyou)",
+        "🇹🇷  همراه اول 🔵 | ترکیه | (helenaloveyou)",
+        "🇬🇧  💎 2 کل اپراتور🟢 | انگلیس ویژه  | (helenaloveyou)",
+        "🇳🇱 💎 کل اپراتور🟢 |  هلند ویژه | (helenaloveyou)",
+        "[🇨🇦] Canada همه اپراتور ها",
+        "[🇩🇪] germany همه اپراتور ها",
+        "[🇬🇧] United Kingdom همه اپراتور ها",
+        "[🇫🇮] Finland همراه اول ",
+        "[🇳🇱] Netherlands همراه اول ",
+        "[🇬🇧] United Kingdom همراه اول ",
+        "[🇨🇦] Canada همراه اول",
+        "[🇩🇪] germany همراه اول 2",
+        "[🇺🇸] USA همراه اول ",
+        "[🇬🇧] United Kingdom ایرانسل",
+        "[🇺🇸] USA ایرانسل",
+        "[🇳🇱] Netherlands ایرانسل2",
+        "germany 1k (تانل) 🇩🇪",
+        "finland 30k (تانل) 🇫🇮",
+        "german jG 🇩🇪",
+        "netherland G 🇳🇱",
+        "england j 🇬🇧",
+        "france j 🇫🇷",
+        "holand j 🇳🇱",
+        "armania j 🇦🇲",
+        "armanestan j2 🇦🇲",
+        "lahestan j 🇵🇱",
+        "finland j 🇫🇮",
+        "italia j 🇮🇹",
+        "albani a1 (بدون تبلیغ یوتوب) 🇦🇱",
+        "albani a2 (بدون تبلیغ یوتوب) 🇦🇱",
+        "england g 🇬🇧",
+        "spain j 🇪🇸",
+        "usa g 🇺🇸",
+        "holand 29k (تانل) 🇳🇱",
+        "germany 100k (تانل) 🇩🇪",
+        "england 31k (تانل) 🇬🇧",
+        "amrica 14k (تانل) 🇺🇸",
+        "turkey 10k (تانل مخصوص گیم و ترید) 🇹🇷",
+        "armanestan 50k (تانل بدون تبلیغ یوتوب) 🇦🇲"
+      ]
+    },
+    {
+      "tag": "OpenAI",
+      "type": "selector",
+      "outbounds": [
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "America"
+    },
+    {
+      "tag": "Google",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Telegram",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Twitter",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Facebook",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "BiliBili",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan"
+      ]
+    },
+    {
+      "tag": "Bahamut",
+      "type": "selector",
+      "outbounds": [
+        "TaiWan",
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Spotify",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "America"
+    },
+    {
+      "tag": "TikTok",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America"
+      ],
+      "default": "Japan"
+    },
+    {
+      "tag": "Netflix",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Disney+",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Apple",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Microsoft",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Games",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Streaming",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Global",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others",
+        "direct"
+      ]
+    },
+    {
+      "tag": "China",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "HongKong",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "TaiWan",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Singapore",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "Japan",
+      "type": "selector",
+      "outbounds": [
+        "Proxy"
+      ]
+    },
+    {
+      "tag": "America",
+      "type": "selector",
+      "outbounds": [
+        "[🇺🇸] USA همراه اول ",
+        "[🇺🇸] USA ایرانسل",
+        "usa g 🇺🇸",
+        "amrica 14k (تانل) 🇺🇸"
+      ]
+    },
+    {
+      "tag": "Others",
+      "type": "selector",
+      "outbounds": [
+        "🇩🇪 Tunnel Germany 1",
+        "🇩🇪 Tunnel Germany 2",
+        "🇳🇱 Tunnel Netherlands 1",
+        "🇳🇱 Tunnel Netherlands 2",
+        " 🇩🇪 1 آلمان کل اپراتور 🟢",
+        " 🇩🇪 2 آلمان کل اپراتور 🟢 (helenaloveyou)",
+        "🇬🇧 2 انگلیس کل اپراتور 🟢",
+        "🇳🇱 1 هلند کل اپراتور 🟢",
+        " 🇩🇪 3 آلمان کل اپراتور 🟢",
+        "🇩🇪  💎 کل اپراتور🟢 | آلمان ویژه  | (helenaloveyou)",
+        "🇹🇷  همراه اول 🔵 | ترکیه | (helenaloveyou)",
+        "🇬🇧  💎 2 کل اپراتور🟢 | انگلیس ویژه  | (helenaloveyou)",
+        "🇳🇱 💎 کل اپراتور🟢 |  هلند ویژه | (helenaloveyou)",
+        "[🇨🇦] Canada همه اپراتور ها",
+        "[🇩🇪] germany همه اپراتور ها",
+        "[🇬🇧] United Kingdom همه اپراتور ها",
+        "[🇫🇮] Finland همراه اول ",
+        "[🇳🇱] Netherlands همراه اول ",
+        "[🇬🇧] United Kingdom همراه اول ",
+        "[🇨🇦] Canada همراه اول",
+        "[🇩🇪] germany همراه اول 2",
+        "[🇬🇧] United Kingdom ایرانسل",
+        "[🇳🇱] Netherlands ایرانسل2",
+        "germany 1k (تانل) 🇩🇪",
+        "finland 30k (تانل) 🇫🇮",
+        "german jG 🇩🇪",
+        "netherland G 🇳🇱",
+        "england j 🇬🇧",
+        "france j 🇫🇷",
+        "holand j 🇳🇱",
+        "armania j 🇦🇲",
+        "armanestan j2 🇦🇲",
+        "lahestan j 🇵🇱",
+        "finland j 🇫🇮",
+        "italia j 🇮🇹",
+        "albani a1 (بدون تبلیغ یوتوب) 🇦🇱",
+        "albani a2 (بدون تبلیغ یوتوب) 🇦🇱",
+        "england g 🇬🇧",
+        "spain j 🇪🇸",
+        "holand 29k (تانل) 🇳🇱",
+        "germany 100k (تانل) 🇩🇪",
+        "england 31k (تانل) 🇬🇧",
+        "turkey 10k (تانل مخصوص گیم و ترید) 🇹🇷",
+        "armanestan 50k (تانل بدون تبلیغ یوتوب) 🇦🇲"
+      ]
+    },
+    {
+      "tag": "auto",
+      "type": "urltest",
+      "outbounds": [
+        "🇩🇪 Tunnel Germany 1",
+        "🇩🇪 Tunnel Germany 2",
+        "🇳🇱 Tunnel Netherlands 1",
+        "🇳🇱 Tunnel Netherlands 2",
+        " 🇩🇪 1 آلمان کل اپراتور 🟢",
+        " 🇩🇪 2 آلمان کل اپراتور 🟢 (helenaloveyou)",
+        "🇬🇧 2 انگلیس کل اپراتور 🟢",
+        "🇳🇱 1 هلند کل اپراتور 🟢",
+        " 🇩🇪 3 آلمان کل اپراتور 🟢",
+        "🇩🇪  💎 کل اپراتور🟢 | آلمان ویژه  | (helenaloveyou)",
+        "🇹🇷  همراه اول 🔵 | ترکیه | (helenaloveyou)",
+        "🇬🇧  💎 2 کل اپراتور🟢 | انگلیس ویژه  | (helenaloveyou)",
+        "🇳🇱 💎 کل اپراتور🟢 |  هلند ویژه | (helenaloveyou)",
+        "[🇨🇦] Canada همه اپراتور ها",
+        "[🇩🇪] germany همه اپراتور ها",
+        "[🇬🇧] United Kingdom همه اپراتور ها",
+        "[🇫🇮] Finland همراه اول ",
+        "[🇳🇱] Netherlands همراه اول ",
+        "[🇬🇧] United Kingdom همراه اول ",
+        "[🇨🇦] Canada همراه اول",
+        "[🇩🇪] germany همراه اول 2",
+        "[🇺🇸] USA همراه اول ",
+        "[🇬🇧] United Kingdom ایرانسل",
+        "[🇺🇸] USA ایرانسل",
+        "[🇳🇱] Netherlands ایرانسل2",
+        "germany 1k (تانل) 🇩🇪",
+        "finland 30k (تانل) 🇫🇮",
+        "german jG 🇩🇪",
+        "netherland G 🇳🇱",
+        "england j 🇬🇧",
+        "france j 🇫🇷",
+        "holand j 🇳🇱",
+        "armania j 🇦🇲",
+        "armanestan j2 🇦🇲",
+        "lahestan j 🇵🇱",
+        "finland j 🇫🇮",
+        "italia j 🇮🇹",
+        "albani a1 (بدون تبلیغ یوتوب) 🇦🇱",
+        "albani a2 (بدون تبلیغ یوتوب) 🇦🇱",
+        "england g 🇬🇧",
+        "spain j 🇪🇸",
+        "usa g 🇺🇸",
+        "holand 29k (تانل) 🇳🇱",
+        "germany 100k (تانل) 🇩🇪",
+        "england 31k (تانل) 🇬🇧",
+        "amrica 14k (تانل) 🇺🇸",
+        "turkey 10k (تانل مخصوص گیم و ترید) 🇹🇷",
+        "armanestan 50k (تانل بدون تبلیغ یوتوب) 🇦🇲"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 Tunnel Germany 1",
+      "server": "asi.v2liight.fun",
+      "server_port": 90,
+      "uuid": "1efe5722-bb25-476c-8dbb-bebdd98f561a"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 Tunnel Germany 2",
+      "server": "asi.v2liight.fun",
+      "server_port": 91,
+      "uuid": "1efe5722-bb25-476c-8dbb-bebdd98f561a",
+      "tls": {
+        "enabled": true,
+        "server_name": "sourceforge.net",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "short_id": "6ba85179e30d4fc2"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇳🇱 Tunnel Netherlands 1",
+      "server": "asi.v2liight.fun",
+      "server_port": 80,
+      "uuid": "1efe5722-bb25-476c-8dbb-bebdd98f561a"
+    },
+    {
+      "type": "vless",
+      "tag": "🇳🇱 Tunnel Netherlands 2",
+      "server": "asi.v2liight.fun",
+      "server_port": 81,
+      "uuid": "1efe5722-bb25-476c-8dbb-bebdd98f561a",
+      "tls": {
+        "enabled": true,
+        "server_name": "sourceforge.net",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "short_id": "6ba85179e30d4fc2"
+        }
+      }
+    },
+    {
+      "type": "vmess",
+      "tag": " 🇩🇪 1 آلمان کل اپراتور 🟢",
+      "server": "almanian.hamimelectronic.ir",
+      "server_port": 8090,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": " 🇩🇪 2 آلمان کل اپراتور 🟢 (helenaloveyou)",
+      "server": "ahamoahs.abletodothingsorg.com",
+      "server_port": 8090,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": "🇬🇧 2 انگلیس کل اپراتور 🟢",
+      "server": "kolinkas.atroart.ir",
+      "server_port": 8090,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 1 هلند کل اپراتور 🟢",
+      "server": "bokolafas.attarisamadi.ir",
+      "server_port": 8090,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": " 🇩🇪 3 آلمان کل اپراتور 🟢",
+      "server": "atepko.mordad26do.ir",
+      "server_port": 8090,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": "🇩🇪  💎 کل اپراتور🟢 | آلمان ویژه  | (helenaloveyou)",
+      "server": "atepko.mordad26do.ir",
+      "server_port": 8081,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": "🇹🇷  همراه اول 🔵 | ترکیه | (helenaloveyou)",
+      "server": "alakaskanaa.abletodothingsorg.com",
+      "server_port": 8081,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": "🇬🇧  💎 2 کل اپراتور🟢 | انگلیس ویژه  | (helenaloveyou)",
+      "server": "kolinkas.atroart.ir",
+      "server_port": 8081,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vmess",
+      "tag": "🇳🇱 💎 کل اپراتور🟢 |  هلند ویژه | (helenaloveyou)",
+      "server": "agermianms.alcatelindan.com",
+      "server_port": 8081,
+      "uuid": "d35c4b82-0ef0-419c-b0eb-52403ac8f0be",
+      "security": "auto",
+      "alter_id": 0
+    },
+    {
+      "type": "vless",
+      "tag": "[🇨🇦] Canada همه اپراتور ها",
+      "server": "mza2tu.lizardshop.org",
+      "server_port": 2060,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.digikala.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "vbuJqtlEuVyhIL0xBwJ-YW29c9awmmFC5jHlQGMccUg",
+          "short_id": "36da09a28c478876"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "2060vless"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇩🇪] germany همه اپراتور ها",
+      "server": "mzatu3.lizard2shop.com",
+      "server_port": 2060,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.digikala.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "vbuJqtlEuVyhIL0xBwJ-YW29c9awmmFC5jHlQGMccUg",
+          "short_id": "36da09a28c478876"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "2060vless"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇬🇧] United Kingdom همه اپراتور ها",
+      "server": "mzatu.lizardshop.org",
+      "server_port": 2060,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.digikala.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "vbuJqtlEuVyhIL0xBwJ-YW29c9awmmFC5jHlQGMccUg",
+          "short_id": "36da09a28c478876"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "2060vless"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇫🇮] Finland همراه اول ",
+      "server": "aafc2.lizard2shop.com",
+      "server_port": 2083,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "mzax5.lizardshop.org",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "host": "mzax5.lizardshop.org"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇳🇱] Netherlands همراه اول ",
+      "server": "aafc2.lizard2shop.com",
+      "server_port": 2083,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "mza90.lizard2shop.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "host": "mza90.lizard2shop.com"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇬🇧] United Kingdom همراه اول ",
+      "server": "aafc1.lizard2shop.com",
+      "server_port": 2083,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "mza20.lizardshop.org",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "host": "mza20.lizardshop.org"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇨🇦] Canada همراه اول",
+      "server": "aafc2.lizard2shop.com",
+      "server_port": 2083,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "mza70.ircx.space",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "host": "mza70.ircx.space"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇩🇪] germany همراه اول 2",
+      "server": "aafc1.lizard2shop.com",
+      "server_port": 2083,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "Mzaxmc.lizard2shop.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "host": "Mzaxmc.lizard2shop.com"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇺🇸] USA همراه اول ",
+      "server": "aafc3.lizard2shop.com",
+      "server_port": 2083,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "uscl.lizard2shop.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "host": "uscl.lizard2shop.com"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇬🇧] United Kingdom ایرانسل",
+      "server": "mza2.lizardshop.org",
+      "server_port": 2052,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "wordpress.org",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "short_id": "6ba85179e30d4fc2"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "xyz"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇺🇸] USA ایرانسل",
+      "server": "us.lizard2shop.com",
+      "server_port": 2053,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.brookings.edu",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "xyz"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "[🇳🇱] Netherlands ایرانسل2",
+      "server": "mzax8.lizardshop.org",
+      "server_port": 2053,
+      "uuid": "f5718141-f9c2-4177-868c-e86ce1060d9d",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.brookings.edu",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "xyz"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "germany 1k (تانل) 🇩🇪",
+      "server": "1k.firstmirst.shop",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "finland 30k (تانل) 🇫🇮",
+      "server": "30k.zipzoop.shop",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "german jG 🇩🇪",
+      "server": "194.87.58.7",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "netherland G 🇳🇱",
+      "server": "87.120.167.144",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "england j 🇬🇧",
+      "server": "5.39.254.9",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "france j 🇫🇷",
+      "server": "166.88.228.24",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "holand j 🇳🇱",
+      "server": "nethj.bestjadid.ir",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "armania j 🇦🇲",
+      "server": "86.107.50.47",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "armanestan j2 🇦🇲",
+      "server": "193.58.120.137",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "lahestan j 🇵🇱",
+      "server": "pol.bestjadid.ir",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "finland j 🇫🇮",
+      "server": "fin.bestjadid.ir",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "italia j 🇮🇹",
+      "server": "itly.bestjadid.ir",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "albani a1 (بدون تبلیغ یوتوب) 🇦🇱",
+      "server": "93.123.46.205",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "albani a2 (بدون تبلیغ یوتوب) 🇦🇱",
+      "server": "93.123.46.234",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "england g 🇬🇧",
+      "server": "109.107.159.197",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "spain j 🇪🇸",
+      "server": "91.149.243.233",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "usa g 🇺🇸",
+      "server": "162.216.231.102",
+      "server_port": 443,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "tls": {
+        "enabled": true,
+        "server_name": "journalofbigdata.springeropen.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "z9-l0OuqP9sQcXX0A80_1rv-DksE8JW77dceGFJZjwU",
+          "short_id": "3e5d00a37c837cee"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "grpc"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "holand 29k (تانل) 🇳🇱",
+      "server": "29k.firstmirst.shop",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "germany 100k (تانل) 🇩🇪",
+      "server": "100k.bestmest.shop",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "england 31k (تانل) 🇬🇧",
+      "server": "31k.taptop.shop",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "amrica 14k (تانل) 🇺🇸",
+      "server": "14k.taptop.shop",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "turkey 10k (تانل مخصوص گیم و ترید) 🇹🇷",
+      "server": "10k.sarmar.shop",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "armanestan 50k (تانل بدون تبلیغ یوتوب) 🇦🇲",
+      "server": "50k.shirim.top",
+      "server_port": 8441,
+      "uuid": "8520ca81-3dde-44ed-8eae-63b2c3f2bbda",
+      "transport": {
+        "type": "ws"
+      }
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "Proxy",
+    "rules": [
+      {
+        "inbound": [
+          "tun-in",
+          "mixed-in"
+        ],
+        "action": "sniff"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "action": "hijack-dns"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "clash_mode": "rule",
+        "action": "reject"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "clash_mode": "global",
+        "outbound": "Proxy"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "Proxy"
+      },
+      {
+        "domain": [
+          "clash.razord.top",
+          "yacd.metacubex.one",
+          "yacd.haishan.me",
+          "d.metacubex.one"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-openai",
+        "outbound": "OpenAI"
+      },
+      {
+        "rule_set": [
+          "geosite-youtube",
+          "geoip-google",
+          "geosite-google",
+          "geosite-github"
+        ],
+        "outbound": "Google"
+      },
+      {
+        "rule_set": [
+          "geoip-telegram",
+          "geosite-telegram"
+        ],
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": [
+          "geoip-twitter",
+          "geosite-twitter"
+        ],
+        "outbound": "Twitter"
+      },
+      {
+        "rule_set": [
+          "geoip-facebook",
+          "geosite-facebook"
+        ],
+        "outbound": "Facebook"
+      },
+      {
+        "rule_set": "geosite-bilibili",
+        "outbound": "BiliBili"
+      },
+      {
+        "rule_set": "geosite-bahamut",
+        "outbound": "Bahamut"
+      },
+      {
+        "rule_set": "geosite-spotify",
+        "outbound": "Spotify"
+      },
+      {
+        "rule_set": "geosite-tiktok",
+        "outbound": "TikTok"
+      },
+      {
+        "rule_set": [
+          "geoip-netflix",
+          "geosite-netflix"
+        ],
+        "outbound": "Netflix"
+      },
+      {
+        "rule_set": "geosite-disney",
+        "outbound": "Disney+"
+      },
+      {
+        "rule_set": [
+          "geoip-apple",
+          "geosite-apple",
+          "geosite-amazon"
+        ],
+        "outbound": "Apple"
+      },
+      {
+        "rule_set": "geosite-microsoft",
+        "outbound": "Microsoft"
+      },
+      {
+        "rule_set": [
+          "geosite-category-games",
+          "geosite-dmm"
+        ],
+        "outbound": "Games"
+      },
+      {
+        "rule_set": [
+          "geosite-hbo",
+          "geosite-primevideo"
+        ],
+        "outbound": "Streaming"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "outbound": "Global"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "China"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-openai",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/Toperlock/sing-box-geosite@main/rule/OpenAI.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-youtube",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-github",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bahamut",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bahamut.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-tiktok",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/tiktok.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-disney",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/disney.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-amazon",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-category-games",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-games.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-dmm",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/dmm.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-hbo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/hbo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-primevideo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/primevideo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+        "download_detour": "direct"
+      }
+    ]
+  }
+}
