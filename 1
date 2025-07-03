@@ -1,0 +1,1143 @@
+{
+    "log": {
+      "level": "warn",
+      "timestamp": true
+    },
+    "dns": {
+      "servers": [
+        {
+          "tag": "dns_proxy",
+          "address": "tcp://8.8.8.8",
+          "address_resolver": "dns_direct",
+          "strategy": "prefer_ipv4",
+          "detour": "اعتراضات سراسری"
+        },
+        {
+          "tag": "dns_proxy_ipv4",
+          "address": "tcp://8.8.8.8",
+          "address_resolver": "dns_direct",
+          "strategy": "ipv4_only",
+          "detour": "اعتراضات سراسری"
+        },
+        {
+          "tag": "dns_direct",
+          "address": "local",
+          "strategy": "prefer_ipv4",
+          "detour": "اعتراضات سراسری"
+        },
+        {
+          "tag": "dns_block",
+          "address": "rcode://success"
+        }
+      ],
+      "rules": [
+        {
+          "outbound": "any",
+          "server": "dns_direct"
+        }
+
+
+      ],
+      "final": "dns_proxy",
+      "independent_cache": true
+    },
+    "ntp": {
+      "enabled": true,
+      "server": "ir.pool.ntp.org",
+      "server_port": 123,
+      "detour": "direct"
+    },
+    "inbounds": [
+      {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 20122,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "http",
+      "listen": "127.0.0.1",
+      "listen_port": 8181,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 8080,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "tun",
+     "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "endpoint_independent_nat": false,
+      "stack": "mixed",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 20122
+        }
+      },
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
+    }
+
+    ],
+     "outbounds": [
+{
+        "type": "selector",
+        "tag": "منصوره سگوند مهسا موگویی",
+        "outbounds": [
+          "اعتراضات سراسری",
+          "اعتراضات سراسری"
+
+
+        ],
+        "default": "اعتراضات سراسری",
+        "interrupt_exist_connections": true
+      },
+
+   {
+        "type": "selector",
+        "tag": "نیکا شاکرمی مهسا امینی",
+        "outbounds": [
+          "اعتراضات سراسری",
+          "اعتراضات سراسری"
+
+
+        ],
+        "default": "اعتراضات سراسری",
+        "interrupt_exist_connections": true
+      },
+        {
+            "tag": "رضا شاه روحت شاد",
+            "type": "selector",
+            "outbounds": [
+                "اعتراضات سراسری",
+                     "Turkey 🇹🇷",
+                "Finland 🇫🇮",
+                "Romania 🇷🇴",
+                "France 🇫🇷",
+                 "Sweden 🇸🇪",
+                 "United Arab 🇦🇪",
+                 "Algeria 🇩🇿",
+                 "Austria 🇦🇹",
+                 "Australia 🇦🇺",
+                 "Belgium 🇧🇪",
+                 "Bulgaria 🇧🇬",
+                 "Brazil 🇧🇷",
+                 "Canada 🇨🇦",
+                 "Switzerland 🇨🇭",
+                 "Chile 🇨🇱",
+                 "Moldova 🇲🇩",
+                 "Cyprus 🇨🇾",
+                 "Czechia 🇨🇿",
+                 "Germany 🇩🇪",
+                 "Denmark 🇩🇰",
+                 "United States 🇺🇸",
+                 "Estonia 🇪🇪",
+                 "Spain 🇪🇸",
+                 "Luxembourg 🇱🇺",
+                 "Ukraine 🇺🇦",
+                 "Georgia 🇬🇪",
+                 "Greece 🇬🇷",
+                 "Hong Kong 🇭🇰",
+                 "Hungary 🇭🇺",
+                 "Singapore 🇸🇬",
+                 "United Kingdom 🇬🇧",
+                 "Italy 🇮🇹",
+                 "Japan 🇯🇵",
+                 "Lithuania 🇱🇹",
+                 "Netherlands 🇳🇱"
+
+
+
+            ]
+        },
+
+{
+            "tag": "اعتراضات سراسری",
+            "type": "urltest",
+            "outbounds": [
+
+                          "Turkey 🇹🇷",
+                "Finland 🇫🇮",
+                "Romania 🇷🇴",
+                "France 🇫🇷",
+                 "Sweden 🇸🇪",
+                 "United Arab 🇦🇪",
+                 "Algeria 🇩🇿",
+                 "Austria 🇦🇹",
+                 "Australia 🇦🇺",
+                 "Belgium 🇧🇪",
+                 "Bulgaria 🇧🇬",
+                 "Brazil 🇧🇷",
+                 "Canada 🇨🇦",
+                 "Switzerland 🇨🇭",
+                 "Chile 🇨🇱",
+                 "Moldova 🇲🇩",
+                 "Cyprus 🇨🇾",
+                 "Czechia 🇨🇿",
+                 "Germany 🇩🇪",
+                 "Denmark 🇩🇰",
+                 "United States 🇺🇸",
+                 "Estonia 🇪🇪",
+                 "Spain 🇪🇸",
+                 "Luxembourg 🇱🇺",
+                 "Ukraine 🇺🇦",
+                 "Georgia 🇬🇪",
+                 "Greece 🇬🇷",
+                 "Hong Kong 🇭🇰",
+                 "Hungary 🇭🇺",
+                 "Singapore 🇸🇬",
+                 "United Kingdom 🇬🇧",
+                 "Italy 🇮🇹",
+                 "Japan 🇯🇵",
+                 "Lithuania 🇱🇹",
+                 "Netherlands 🇳🇱"
+
+
+      ],
+      "url": "http://cp.cloudflare.com",
+      "interval": "10m0s"
+
+    },
+
+   
+            
+    
+            {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-tr.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Turkey 🇹🇷",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+    
+                        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-fi.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Finland 🇫🇮",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+            {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-ro.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Romania 🇷🇴",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-fr.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "France 🇫🇷",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-se.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Sweden 🇸🇪",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-ae.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "United Arab 🇦🇪",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-al.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Algeria 🇩🇿",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-at.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Austria 🇦🇹",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s10104588"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-au.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Australia 🇦🇺",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-be.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Belgium 🇧🇪",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-bg.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Bulgaria 🇧🇬",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-br.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Brazil 🇧🇷",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-ca.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Canada 🇨🇦",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-ch.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Switzerland 🇨🇭",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-cl.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Chile 🇨🇱",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-cr.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Moldova 🇲🇩",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-cy.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Cyprus 🇨🇾",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-cz.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Czechia 🇨🇿",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-de.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Germany 🇩🇪",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-dk.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Denmark 🇩🇰",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-dy.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "United States 🇺🇸",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-ee.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Estonia 🇪🇪",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-es.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Spain 🇪🇸",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-vn.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Luxembourg 🇱🇺",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-ua.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Ukraine 🇺🇦",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-ge.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Georgia 🇬🇪",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-gr.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Greece 🇬🇷",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-hk.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Hong Kong 🇭🇰",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-hu.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Hungary 🇭🇺",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-in.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Singapore 🇸🇬",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-is.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "United Kingdom 🇬🇧",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-it.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Italy 🇮🇹",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-jp.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Japan 🇯🇵",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-lt.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Lithuania 🇱🇹",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+{
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "dUsOF552ZXVAWD",
+            "path": "",
+            "server": "prox-nl.pointtoserver.com",
+            "server_port": 10780,
+            "domain_strategy": "",
+            "tag": "Netherlands 🇳🇱",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": false,
+
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "purevpn0s14187318"
+        },
+        {
+      "type": "direct",
+      "tag": "direct"
+    },
+
+
+  ],
+    "route": {
+     "rules": [
+      {
+        "inbound": "tun-in",
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "رضا شاه روحت شاد"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "direct"
+      },
+      {
+        "network": "tcp",
+        "port": 853,
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "action": "reject",
+        "method": "default"
+      },
+
+      {
+        "inbound": "tun-in",
+        "action": "resolve"
+      },
+
+      {
+        "ip_cidr": "10.10.34.0/24",
+        "outbound": "رضا شاه روحت شاد"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+
+
+
+    ],
+      "final": "اعتراضات سراسری",
+      "auto_detect_interface": true,
+      "override_android_vpn": true
+    },
+    "experimental": {
+      "cache_file": {
+        "enabled": true,
+        "path": "cache.db",
+        "store_fakeip": true
+      },
+      "clash_api": {
+        "default_mode": "@Wearestand 👈🏻کانال تلگرام"
+      }
+    }
+  }
