@@ -1,0 +1,287 @@
+{
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "tcp://8.8.8.8",
+        "address_resolver": "dns_direct",
+        "strategy": "prefer_ipv4",
+        "detour": "global_proxy"
+      },
+      {
+        "tag": "dns_proxy_ipv4",
+        "address": "tcp://8.8.8.8",
+        "address_resolver": "dns_direct",
+        "strategy": "ipv4_only",
+        "detour": "global_proxy"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "local",
+        "strategy": "prefer_ipv4",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_direct"
+      }
+    ],
+    "final": "dns_proxy",
+    "independent_cache": true
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "time.google.com",
+    "server_port": 123,
+    "detour": "direct"
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 20122,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "http",
+      "listen": "127.0.0.1",
+      "listen_port": 8181,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 8080,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "tun",
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "endpoint_independent_nat": false,
+      "stack": "mixed",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 20122
+        }
+      },
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "main_selector",
+      "outbounds": [
+        "global_proxy",
+        "direct"
+      ],
+      "default": "global_proxy",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "secondary_selector",
+      "outbounds": [
+        "global_proxy",
+        "direct"
+      ],
+      "default": "global_proxy",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "country_selector",
+      "outbounds": [
+        "global_proxy",
+        "Turkey",
+        "Finland",
+        "Romania",
+        "France",
+        "Sweden",
+        "UAE",
+        "Algeria",
+        "Austria",
+        "Australia",
+        "Belgium",
+        "Bulgaria",
+        "Brazil",
+        "Canada",
+        "Switzerland",
+        "Chile",
+        "Moldova",
+        "Cyprus",
+        "Czechia",
+        "Germany",
+        "Denmark",
+        "USA",
+        "Estonia",
+        "Spain",
+        "Luxembourg",
+        "Ukraine",
+        "Georgia",
+        "Greece",
+        "HongKong",
+        "Hungary",
+        "Singapore",
+        "UK",
+        "Italy",
+        "Japan",
+        "Lithuania",
+        "Netherlands"
+      ],
+      "default": "global_proxy"
+    },
+    {
+      "type": "urltest",
+      "tag": "global_proxy",
+      "outbounds": [
+        "Turkey",
+        "Finland",
+        "Romania",
+        "France",
+        "Sweden",
+        "UAE",
+        "Algeria",
+        "Austria",
+        "Australia",
+        "Belgium",
+        "Bulgaria",
+        "Brazil",
+        "Canada",
+        "Switzerland",
+        "Chile",
+        "Moldova",
+        "Cyprus",
+        "Czechia",
+        "Germany",
+        "Denmark",
+        "USA",
+        "Estonia",
+        "Spain",
+        "Luxembourg",
+        "Ukraine",
+        "Georgia",
+        "Greece",
+        "HongKong",
+        "Hungary",
+        "Singapore",
+        "UK",
+        "Italy",
+        "Japan",
+        "Lithuania",
+        "Netherlands"
+      ],
+      "url": "http://cp.cloudflare.com",
+      "interval": "10m0s"
+    },
+    {
+      "type": "http",
+      "tag": "Turkey",
+      "server": "prox-tr.pointtoserver.com",
+      "server_port": 10780,
+      "username": "purevpn0s14187318",
+      "password": "dUsOF552ZXVAWD",
+      "headers": {
+        "Host": ["stream.meet.google.com"]
+      },
+      "tls": {
+        "enabled": false,
+        "server_name": "ieee.org",
+        "alpn": ["h2", "http/1.1"]
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "inbound": "tun-in",
+        "action": "sniff"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "country_selector"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "direct"
+      },
+      {
+        "network": "tcp",
+        "port": 853,
+        "action": "reject"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "action": "reject"
+      },
+      {
+        "inbound": "tun-in",
+        "action": "resolve"
+      },
+      {
+        "ip_cidr": "10.10.34.0/24",
+        "outbound": "country_selector"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      }
+    ],
+    "final": "global_proxy",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": true
+    },
+    "clash_api": {
+      "default_mode": "Global"
+    }
+  }
+}
