@@ -10,20 +10,20 @@
                 "address": "tcp://8.8.8.8",
                 "address_resolver": "dns_direct",
                 "strategy": "prefer_ipv4",
-                "detour": "global_proxy"
+                "detour": "Global-Protests"
             },
             {
                 "tag": "dns_proxy_ipv4",
                 "address": "tcp://8.8.8.8",
                 "address_resolver": "dns_direct",
                 "strategy": "ipv4_only",
-                "detour": "global_proxy"
+                "detour": "Global-Protests"
             },
             {
                 "tag": "dns_direct",
                 "address": "local",
                 "strategy": "prefer_ipv4",
-                "detour": "global_proxy"
+                "detour": "Global-Protests"
             },
             {
                 "tag": "dns_block",
@@ -104,105 +104,105 @@
     "outbounds": [
         {
             "type": "selector",
-            "tag": "selector_1",
+            "tag": "Proxy-Selector-1",
             "outbounds": [
-                "global_proxy",
-                "global_proxy"
+                "Global-Protests",
+                "Global-Protests"
             ],
-            "default": "global_proxy",
+            "default": "Global-Protests",
             "interrupt_exist_connections": true
         },
         {
             "type": "selector",
-            "tag": "selector_2",
+            "tag": "Proxy-Selector-2",
             "outbounds": [
-                "global_proxy",
-                "global_proxy"
+                "Global-Protests",
+                "Global-Protests"
             ],
-            "default": "global_proxy",
+            "default": "Global-Protests",
             "interrupt_exist_connections": true
         },
         {
-            "tag": "country_selector",
+            "tag": "Country-Selector",
             "type": "selector",
             "outbounds": [
-                "global_proxy",
-                "Turkey",
-                "Finland",
-                "Romania",
-                "France",
-                "Sweden",
-                "UAE",
-                "Algeria",
-                "Austria",
-                "Australia",
-                "Belgium",
-                "Bulgaria",
-                "Brazil",
-                "Canada",
-                "Switzerland",
-                "Chile",
-                "Moldova",
-                "Cyprus",
-                "Czechia",
-                "Germany",
-                "Denmark",
-                "USA",
-                "Estonia",
-                "Spain",
-                "Luxembourg",
-                "Ukraine",
-                "Georgia",
-                "Greece",
-                "HongKong",
-                "Hungary",
-                "Singapore",
-                "UK",
-                "Italy",
-                "Japan",
-                "Lithuania",
-                "Netherlands"
+                "Global-Protests",
+                "Turkey 🇹🇷",
+                "Finland 🇫🇮",
+                "Romania 🇷🇴",
+                "France 🇫🇷",
+                "Sweden 🇸🇪",
+                "United Arab Emirates 🇦🇪",
+                "Algeria 🇩🇿",
+                "Austria 🇦🇹",
+                "Australia 🇦🇺",
+                "Belgium 🇧🇪",
+                "Bulgaria 🇧🇬",
+                "Brazil 🇧🇷",
+                "Canada 🇨🇦",
+                "Switzerland 🇨🇭",
+                "Chile 🇨🇱",
+                "Moldova 🇲🇩",
+                "Cyprus 🇨🇾",
+                "Czechia 🇨🇿",
+                "Germany 🇩🇪",
+                "Denmark 🇩🇰",
+                "United States 🇺🇸",
+                "Estonia 🇪🇪",
+                "Spain 🇪🇸",
+                "Luxembourg 🇱🇺",
+                "Ukraine 🇺🇦",
+                "Georgia 🇬🇪",
+                "Greece 🇬🇷",
+                "Hong Kong 🇭🇰",
+                "Hungary 🇭🇺",
+                "Singapore 🇸🇬",
+                "United Kingdom 🇬🇧",
+                "Italy 🇮🇹",
+                "Japan 🇯🇵",
+                "Lithuania 🇱🇹",
+                "Netherlands 🇳🇱"
             ]
         },
         {
-            "tag": "global_proxy",
+            "tag": "Global-Protests",
             "type": "urltest",
             "outbounds": [
-                "Turkey",
-                "Finland",
-                "Romania",
-                "France",
-                "Sweden",
-                "UAE",
-                "Algeria",
-                "Austria",
-                "Australia",
-                "Belgium",
-                "Bulgaria",
-                "Brazil",
-                "Canada",
-                "Switzerland",
-                "Chile",
-                "Moldova",
-                "Cyprus",
-                "Czechia",
-                "Germany",
-                "Denmark",
-                "USA",
-                "Estonia",
-                "Spain",
-                "Luxembourg",
-                "Ukraine",
-                "Georgia",
-                "Greece",
-                "HongKong",
-                "Hungary",
-                "Singapore",
-                "UK",
-                "Italy",
-                "Japan",
-                "Lithuania",
-                "Netherlands"
+                "Turkey 🇹🇷",
+                "Finland 🇫🇮",
+                "Romania 🇷🇴",
+                "France 🇫🇷",
+                "Sweden 🇸🇪",
+                "United Arab Emirates 🇦🇪",
+                "Algeria 🇩🇿",
+                "Austria 🇦🇹",
+                "Australia 🇦🇺",
+                "Belgium 🇧🇪",
+                "Bulgaria 🇧🇬",
+                "Brazil 🇧🇷",
+                "Canada 🇨🇦",
+                "Switzerland 🇨🇭",
+                "Chile 🇨🇱",
+                "Moldova 🇲🇩",
+                "Cyprus 🇨🇾",
+                "Czechia 🇨🇿",
+                "Germany 🇩🇪",
+                "Denmark 🇩🇰",
+                "United States 🇺🇸",
+                "Estonia 🇪🇪",
+                "Spain 🇪🇸",
+                "Luxembourg 🇱🇺",
+                "Ukraine 🇺🇦",
+                "Georgia 🇬🇪",
+                "Greece 🇬🇷",
+                "Hong Kong 🇭🇰",
+                "Hungary 🇭🇺",
+                "Singapore 🇸🇬",
+                "United Kingdom 🇬🇧",
+                "Italy 🇮🇹",
+                "Japan 🇯🇵",
+                "Lithuania 🇱🇹",
+                "Netherlands 🇳🇱"
             ],
             "url": "http://cp.cloudflare.com",
             "interval": "10m0s"
@@ -218,7 +218,7 @@
             "server": "prox-tr.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Turkey",
+            "tag": "Turkey 🇹🇷",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -241,7 +241,7 @@
             "server": "prox-fi.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Finland",
+            "tag": "Finland 🇫🇮",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -264,7 +264,7 @@
             "server": "prox-ro.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Romania",
+            "tag": "Romania 🇷🇴",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -287,7 +287,7 @@
             "server": "prox-fr.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "France",
+            "tag": "France 🇫🇷",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -310,7 +310,7 @@
             "server": "prox-se.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Sweden",
+            "tag": "Sweden 🇸🇪",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -333,7 +333,7 @@
             "server": "prox-ae.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "UAE",
+            "tag": "United Arab Emirates 🇦🇪",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -356,7 +356,7 @@
             "server": "prox-al.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Algeria",
+            "tag": "Algeria 🇩🇿",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -379,7 +379,7 @@
             "server": "prox-at.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Austria",
+            "tag": "Austria 🇦🇹",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -402,7 +402,7 @@
             "server": "prox-au.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Australia",
+            "tag": "Australia 🇦🇺",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -425,7 +425,7 @@
             "server": "prox-be.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Belgium",
+            "tag": "Belgium 🇧🇪",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -448,7 +448,7 @@
             "server": "prox-bg.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Bulgaria",
+            "tag": "Bulgaria 🇧🇬",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -471,7 +471,7 @@
             "server": "prox-br.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Brazil",
+            "tag": "Brazil 🇧🇷",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -494,7 +494,7 @@
             "server": "prox-ca.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Canada",
+            "tag": "Canada 🇨🇦",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -517,7 +517,7 @@
             "server": "prox-ch.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Switzerland",
+            "tag": "Switzerland 🇨🇭",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -540,7 +540,7 @@
             "server": "prox-cl.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Chile",
+            "tag": "Chile 🇨🇱",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -563,7 +563,7 @@
             "server": "prox-cr.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Moldova",
+            "tag": "Moldova 🇲🇩",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -586,7 +586,7 @@
             "server": "prox-cy.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Cyprus",
+            "tag": "Cyprus 🇨🇾",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -609,7 +609,7 @@
             "server": "prox-cz.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Czechia",
+            "tag": "Czechia 🇨🇿",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -632,7 +632,7 @@
             "server": "prox-de.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Germany",
+            "tag": "Germany 🇩🇪",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -655,7 +655,7 @@
             "server": "prox-dk.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Denmark",
+            "tag": "Denmark 🇩🇰",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -678,7 +678,7 @@
             "server": "prox-dy.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "USA",
+            "tag": "United States 🇺🇸",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -701,7 +701,7 @@
             "server": "prox-ee.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Estonia",
+            "tag": "Estonia 🇪🇪",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -724,7 +724,7 @@
             "server": "prox-es.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Spain",
+            "tag": "Spain 🇪🇸",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -747,7 +747,7 @@
             "server": "prox-vn.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Luxembourg",
+            "tag": "Luxembourg 🇱🇺",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -770,7 +770,7 @@
             "server": "prox-ua.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Ukraine",
+            "tag": "Ukraine 🇺🇦",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -793,7 +793,7 @@
             "server": "prox-ge.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Georgia",
+            "tag": "Georgia 🇬🇪",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -816,7 +816,7 @@
             "server": "prox-gr.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Greece",
+            "tag": "Greece 🇬🇷",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -839,7 +839,7 @@
             "server": "prox-hk.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "HongKong",
+            "tag": "Hong Kong 🇭🇰",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -862,7 +862,7 @@
             "server": "prox-hu.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Hungary",
+            "tag": "Hungary 🇭🇺",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -885,7 +885,7 @@
             "server": "prox-in.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Singapore",
+            "tag": "Singapore 🇸🇬",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -908,7 +908,7 @@
             "server": "prox-is.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "UK",
+            "tag": "United Kingdom 🇬🇧",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -931,7 +931,7 @@
             "server": "prox-it.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Italy",
+            "tag": "Italy 🇮🇹",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -954,7 +954,7 @@
             "server": "prox-jp.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Japan",
+            "tag": "Japan 🇯🇵",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -977,7 +977,7 @@
             "server": "prox-lt.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Lithuania",
+            "tag": "Lithuania 🇱🇹",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -1000,7 +1000,7 @@
             "server": "prox-nl.pointtoserver.com",
             "server_port": 10780,
             "domain_strategy": "",
-            "tag": "Netherlands",
+            "tag": "Netherlands 🇳🇱",
             "tls": {
                 "alpn": [
                     "h2,http/1.1"
@@ -1029,7 +1029,7 @@
             },
             {
                 "clash_mode": "Global",
-                "outbound": "country_selector"
+                "outbound": "Country-Selector"
             },
             {
                 "clash_mode": "Direct",
@@ -1053,7 +1053,7 @@
             },
             {
                 "ip_cidr": "10.10.34.0/24",
-                "outbound": "country_selector"
+                "outbound": "Country-Selector"
             },
             {
                 "ip_is_private": true,
@@ -1061,7 +1061,7 @@
             }
         ],
         "rule_set": [],
-        "final": "global_proxy",
+        "final": "Global-Protests",
         "auto_detect_interface": true,
         "override_android_vpn": true
     },
