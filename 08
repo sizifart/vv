@@ -10,18 +10,18 @@
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_direct",
         "strategy": "prefer_ipv4",
-        "detour": "@sinvt خرید نسخه ویژه"
+        "detour": "✨Siz-Servers"
       },
       {
         "tag": "dns_direct",
         "address": "local",
         "strategy": "prefer_ipv4",
-        "detour": "@sinvt خرید نسخه ویژه"
+        "detour": "✨Siz-Servers"
       },
       {
         "tag": "direct",
         "address": "tls://8.8.8.8",
-        "detour": "@sinvt خرید نسخه ویژه"
+        "detour": "✨Siz-Servers"
       },
       {
         "tag": "dns_block",
@@ -95,61 +95,59 @@
   "outbounds": [
     {
       "type": "selector",
-      "tag": "@sinvt خرید نسخه ویژه",
+      "tag": "✨Siz-Servers",
       "outbounds": [
-        "@𝙎𝙞𝙉𝘼𝙑𝙈",
-        "@𝙎𝙞𝙉𝘼𝙑𝙈"
+        "🛡SizConnectix🛡",
+        "🛡SizConnectix🛡"
       ]
     },
     {
       "type": "selector",
-      "tag": "@sinvt خرید کانفیگ ویژه",
+      "tag": "✨Siz-Servers",
       "outbounds": [
-        "@𝙎𝙞𝙉𝘼𝙑𝙈",
-        "@𝙎𝙞𝙉𝘼𝙑𝙈"
+        "🛡SizConnectix🛡",
+        "🛡SizConnectix🛡"
       ]
     },
     {
       "type": "selector",
-      "tag": "@sinvt خرید نسخه ویژه",
+      "tag": "✨Siz-Servers",
       "outbounds": [
-        "@𝙎𝙞𝙉𝘼𝙑𝙈",
-        "جهت خرید به sinvt@",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇵🇭",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇮",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇿",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇹",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇱",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬"
+        "🛡SizConnectix🛡",
+        "Connection 🇹🇷",
+        "Connection 🇫🇷",
+        "Connection 🇵🇭",
+        "Connection 🇫🇮",
+        "Connection 🇷🇴",
+        "Connection 🇸🇪",
+        "Connection 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        "Connection 🇩🇪",
+        "Connection 🇦🇪",
+        "Connection 🇩🇿",
+        "Connection 🇦🇹",
+        "Connection 🇦🇱",
+        "Connection 🇧🇪",
+        "Connection 🇧🇬"
       ]
     },
     {
       "type": "urltest",
-      "tag": "@𝙎𝙞𝙉𝘼𝙑𝙈",
+      "tag": "🛡SizConnectix🛡",
       "outbounds": [
-        "جهت خرید به sinvt@",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇵🇭",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇮",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇿",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇹",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇱",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬"
+        "Connection 🇹🇷",
+        "Connection 🇫🇷",
+        "Connection 🇵🇭",
+        "Connection 🇫🇮",
+        "Connection 🇷🇴",
+        "Connection 🇸🇪",
+        "Connection 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        "Connection 🇩🇪",
+        "Connection 🇦🇪",
+        "Connection 🇩🇿",
+        "Connection 🇦🇹",
+        "Connection 🇦🇱",
+        "Connection 🇧🇪",
+        "Connection 🇧🇬"
       ],
       "url": "http://www.gstatic.com/generate_204",
       "interval": "3m0s",
@@ -157,16 +155,16 @@
     },
     {
       "type": "shadowsocks",
-      "tag": "جهت خرید به sinvt@",
-      "detour": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
-      "server": "مادر_جنده_اسکی_دزدی_کنی",
+      "tag": "Connection 🇹🇷",
+      "detour": "Connection 🇹🇷",
+      "server": "prox-tr.pointtoserver.com",
       "server_port": 4776,
       "method": "chacha20-ietf-poly1305",
-      "password": "تریاله اکانت مادر اوب 😄"
+      "password": "xYXpDIhMLKLqB5"
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+      "tag": "Connection 🇹🇷",
       "server": "prox-tr.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -181,7 +179,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇵🇭",
+      "tag": "Connection 🇵🇭",
       "server": "prox-ph.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -196,7 +194,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇮",
+      "tag": "Connection 🇫🇮",
       "server": "prox-fi.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -211,7 +209,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
+      "tag": "Connection 🇷🇴",
       "server": "prox-ro.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -226,7 +224,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
+      "tag": "Connection 🇫🇷",
       "server": "prox-fr.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -241,7 +239,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
+      "tag": "Connection 🇸🇪",
       "server": "prox-se.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -256,7 +254,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "tag": "Connection 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       "server": "prox-is.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -271,7 +269,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+      "tag": "Connection 🇩🇪",
       "server": "prox-de.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -286,7 +284,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇪",
+      "tag": "Connection 🇦🇪",
       "server": "prox-ae.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -301,7 +299,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇿",
+      "tag": "Connection 🇩🇿",
       "server": "prox-al.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -316,7 +314,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇹",
+      "tag": "Connection 🇦🇹",
       "server": "prox-at.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -331,7 +329,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇱",
+      "tag": "Connection 🇦🇱",
       "server": "prox-al.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -346,7 +344,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
+      "tag": "Connection 🇧🇪",
       "server": "prox-be.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -361,7 +359,7 @@
     },
     {
       "type": "http",
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬",
+      "tag": "Connection 🇧🇬",
       "server": "prox-bg.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -398,8 +396,8 @@
         "action": "hijack-dns"
       },
       {
-        "clash_mode": "@sinvt خرید نسخه ویژه",
-        "outbound": "@sinvt خرید نسخه ویژه"
+        "clash_mode": "✨Siz-Servers",
+        "outbound": "✨Siz-Servers"
       },
       {
         "network": "tcp",
@@ -417,7 +415,7 @@
       },
       {
         "ip_cidr": "10.10.34.0/24",
-        "outbound": "@sinvt خرید نسخه ویژه"
+        "outbound": "✨Siz-Servers"
       },
       {
         "ip_is_private": true,
@@ -453,12 +451,12 @@
     "cache_file": {
       "enabled": true,
       "path": "cache.db",
-      "cache_id": "sinavm",
+      "cache_id": "sizconnectix",
       "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
-      "default_mode": "@SiNAVM👈🏻تلگرام",
+      "default_mode": "🛡SizConnectix🛡",
       "access_control_allow_origin": "https://yacd.metacubex.one",
       "access_control_allow_private_network": true
     }
