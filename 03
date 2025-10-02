@@ -1,7 +1,7 @@
 {
   "log": {
     "disabled": false,
-    "level": "info",
+    "level": "warn",
     "output": "",
     "timestamp": true
   },
@@ -16,7 +16,9 @@
       "access_control_allow_origin": [
         "*"
       ],
-      "access_control_allow_private_network": false
+      "auto_detect_interface": true,
+      "override_android_vpn": true
+      "access_control_allow_private_network": true
     },
     "cache_file": {
       "enabled": true,
