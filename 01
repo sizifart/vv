@@ -97,23 +97,24 @@
       "type": "selector",
       "tag": "✨Siz-Servers",
       "outbounds": [
-        "🔹Siz-Connectix",
-        "🔹Siz-Connectix"
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈"
       ]
     },
     {
       "type": "selector",
       "tag": "@sinvt خرید کانفیگ ویژه",
       "outbounds": [
-        "🔹Siz-Connectix",
-        "🔹Siz-Connectix"
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈"
       ]
     },
     {
       "type": "selector",
       "tag": "✨Siz-Servers",
       "outbounds": [
-        "🔹Siz-Connectix",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
+        "جهت خرید به sinvt@",
         "Connection 🇹🇷",
         "Connection 🇫🇷",
         "Connection 🇵🇭",
@@ -132,8 +133,9 @@
     },
     {
       "type": "urltest",
-      "tag": "🔹Siz-Connectix",
+      "tag": "@𝙎𝙞𝙉𝘼𝙑𝙈",
       "outbounds": [
+        "جهت خرید به sinvt@",
         "Connection 🇹🇷",
         "Connection 🇫🇷",
         "Connection 🇵🇭",
@@ -152,6 +154,15 @@
       "url": "http://www.gstatic.com/generate_204",
       "interval": "3m0s",
       "tolerance": 1
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "جهت خرید به sinvt@",
+      "detour": "Connection 🇹🇷",
+      "server": "مادر_جنده_اسکی_دزدی_کنی",
+      "server_port": 4776,
+      "method": "chacha20-ietf-poly1305",
+      "password": "تریاله اکانت مادر اوب 😄"
     },
     {
       "type": "http",
