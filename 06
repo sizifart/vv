@@ -16,9 +16,7 @@
       "access_control_allow_origin": [
         "*"
       ],
-      "auto_detect_interface": true,
-      "override_android_vpn": true,
-      "access_control_allow_private_network": true
+"access_control_allow_private_network": true
     },
     "cache_file": {
       "enabled": true,
@@ -440,6 +438,7 @@
       }
     ],
     "auto_detect_interface": true,
+    "override_android_vpn": true,
     "final": "🕹 Connection Type"
   },
   "dns": {
