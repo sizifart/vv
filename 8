@@ -1,54 +1,125 @@
 {
   "log": {
-    "disabled": false,
     "level": "panic",
-    "output": "",
     "timestamp": true
   },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "127.0.0.1:20123",
-      "external_ui": "",
-      "external_ui_download_url": "",
-      "external_ui_download_detour": "🎯 Direct",
-      "secret": "ID_nmesx41r",
-      "default_mode": "rule",
-      "access_control_allow_origin": "http://yacd.haishan.me",
-      "access_control_allow_private_network": true
-    },
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "cache_id": "",
-      "store_fakeip": true,
-      "store_rdrc": true,
-      "rdrc_timeout": "7d"
-    }
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_direct",
+        "strategy": "prefer_ipv4",
+        "detour": "@sinvt خرید نسخه ویژه"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "local",
+        "strategy": "prefer_ipv4",
+        "detour": "@sinvt خرید نسخه ویژه"
+      },
+      {
+        "tag": "direct",
+        "address": "tls://8.8.8.8",
+        "detour": "@sinvt خرید نسخه ویژه"
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_direct"
+      }
+    ],
+    "final": "dns_proxy",
+    "independent_cache": true
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "ir.pool.ntp.org",
+    "server_port": 123,
+    "detour": "direct"
   },
   "inbounds": [
     {
       "type": "mixed",
-      "tag": "mixed-in",
       "listen": "127.0.0.1",
       "listen_port": 20122,
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": false
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
+    },
+    {
+      "type": "http",
+      "listen": "127.0.0.1",
+      "listen_port": 8181,
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
+    },
+    {
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 8080,
+      "udp_fragment": true,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
+    },
+    {
+      "type": "tun",
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "mixed",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 20122
+        }
+      },
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
     }
   ],
   "outbounds": [
     {
       "type": "selector",
-      "tag": "✨Siz-Servers",
-      "interrupt_exist_connections": true,
+      "tag": "@sinvt خرید نسخه ویژه",
       "outbounds": [
-        "📡 Auto Connection",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "@sinvt خرید کانفیگ ویژه",
+      "outbounds": [
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "@sinvt خرید نسخه ویژه",
+      "outbounds": [
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
         "جهت خرید به sinvt@",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇵🇭",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇮",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
@@ -62,18 +133,14 @@
     },
     {
       "type": "urltest",
-      "tag": "📡 Auto Connection",
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "3m",
-      "tolerance": 150,
-      "interrupt_exist_connections": true,
+      "tag": "@𝙎𝙞𝙉𝘼𝙑𝙈",
       "outbounds": [
         "جهت خرید به sinvt@",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇵🇭",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇮",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🏴󠁧󠁢󠁥󠁮󠁧󠁿",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
@@ -83,31 +150,10 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇱",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬"
-      ]
-    },
-    {
-      "type": "direct",
-      "tag": "🎯 Direct"
-    },
-    {
-      "type": "selector",
-      "tag": "🕹 Connection Type",
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "✨Siz-Servers",
-        "🎯 Direct"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "🔅 SIZGLOBAL",
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "✨Siz-Servers",
-        "📡 Auto Connection",
-        "🎯 Direct",
-        "🕹 Connection Type"
-      ]
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "3m0s",
+      "tolerance": 1
     },
     {
       "type": "shadowsocks",
@@ -332,173 +378,89 @@
   "route": {
     "rules": [
       {
-        "action": "hijack-dns",
-        "protocol": "dns"
+        "inbound": "tun-in",
+        "action": "sniff"
       },
       {
-        "action": "route",
-        "clash_mode": "direct",
-        "outbound": "🎯 Direct"
-      },
-      {
-        "action": "route",
-        "clash_mode": "global",
-        "outbound": "🔅 SIZGLOBAL"
-      },
-      {
-        "action": "reject",
-        "protocol": "quic"
-      },
-      {
-        "action": "reject",
-        "rule_set": [
-          "Category-Ads"
-        ]
-      },
-      {
-        "action": "route",
-        "rule_set": [
-          "GeoSite-Private"
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "inbound": "dns-in"
+          },
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
         ],
-        "outbound": "🎯 Direct"
+        "action": "hijack-dns"
       },
       {
-        "action": "route",
-        "rule_set": [
-          "GeoSite-CN"
+        "clash_mode": "@sinvt خرید نسخه ویژه",
+        "outbound": "@sinvt خرید نسخه ویژه"
+      },
+      {
+        "network": "tcp",
+        "port": 853,
+        "action": "reject"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "action": "reject"
+      },
+      {
+        "inbound": "tun-in",
+        "action": "resolve"
+      },
+      {
+        "ip_cidr": "10.10.34.0/24",
+        "outbound": "@sinvt خرید نسخه ویژه"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "domain_regex": [
+          ".*\\.ir$",
+          ".*\\.xn--mgba3a4f16a$"
         ],
-        "outbound": "🎯 Direct"
+        "outbound": "direct"
       },
       {
-        "action": "route",
-        "rule_set": [
-          "GeoIP-Private"
+        "protocol": "stun",
+        "action": "reject"
+      },
+      {
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
         ],
-        "outbound": "🎯 Direct"
-      },
-      {
-        "action": "route",
-        "rule_set": [
-          "GeoIP-CN"
+        "ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
         ],
-        "outbound": "🎯 Direct"
-      },
-      {
-        "action": "route",
-        "rule_set": [
-          "GeoLocation-!CN"
-        ],
-        "outbound": "✨Siz-Servers"
-      }
-    ],
-    "rule_set": [
-      {
-        "tag": "Category-Ads",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
-        "format": "binary",
-        "download_detour": "🎯 Direct"
-      },
-      {
-        "tag": "GeoIP-Private",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs",
-        "format": "binary",
-        "download_detour": "🎯 Direct"
-      },
-      {
-        "tag": "GeoSite-Private",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
-        "format": "binary",
-        "download_detour": "🎯 Direct"
-      },
-      {
-        "tag": "GeoIP-CN",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-        "format": "binary",
-        "download_detour": "🎯 Direct"
-      },
-      {
-        "tag": "GeoSite-CN",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "format": "binary",
-        "download_detour": "🎯 Direct"
-      },
-      {
-        "tag": "GeoLocation-!CN",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-        "format": "binary",
-        "download_detour": "🎯 Direct"
+        "action": "reject"
       }
     ],
     "auto_detect_interface": true,
-	"override_android_vpn": true,
-    "final": "🕹 Connection Type"
+    "override_android_vpn": true
   },
-  "dns": {
-    "servers": [
-      {
-        "tag": "Local-DNS",
-        "address": "https://223.5.5.5:443/dns-query",
-        "address_resolver": "Local-DNS-Resolver",
-        "detour": "🎯 Direct"
-      },
-      {
-        "tag": "Local-DNS-Resolver",
-        "address": "udp://223.5.5.5:53",
-        "detour": "🎯 Direct"
-      },
-      {
-        "tag": "Remote-DNS",
-        "address": "tls://8.8.8.8:853",
-        "address_resolver": "Remote-DNS-Resolver",
-        "detour": "✨Siz-Servers"
-      },
-      {
-        "tag": "Remote-DNS-Resolver",
-        "address": "udp://8.8.8.8:53",
-        "detour": "✨Siz-Servers"
-      }
-    ],
-    "rules": [
-      {
-        "action": "route",
-        "server": "Local-DNS",
-        "outbound": "any"
-      },
-      {
-        "action": "route",
-        "clash_mode": "direct",
-        "server": "Local-DNS"
-      },
-      {
-        "action": "route",
-        "clash_mode": "global",
-        "server": "Remote-DNS"
-      },
-      {
-        "action": "route",
-        "rule_set": [
-          "GeoSite-CN"
-        ],
-        "server": "Local-DNS"
-      },
-      {
-        "action": "route",
-        "rule_set": [
-          "GeoLocation-!CN"
-        ],
-        "server": "Remote-DNS"
-      }
-    ],
-    "disable_cache": false,
-    "disable_expire": true,
-    "independent_cache": true,
-    "final": "Local-DNS",
-    "strategy": "ipv4_only"
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "cache_id": "sinavm",
+      "store_fakeip": true
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "default_mode": "@SiNAVM👈🏻تلگرام",
+      "access_control_allow_origin": "https://yacd.metacubex.one",
+      "access_control_allow_private_network": true
+    }
   }
 }
