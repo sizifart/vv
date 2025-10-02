@@ -10,7 +10,7 @@
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_direct",
         "strategy": "prefer_ipv4",
-        "detour": "proxy"
+        "detour": "proxy-selector"
       },
       {
         "tag": "dns_direct",
@@ -46,47 +46,41 @@
   "inbounds": [
     {
       "type": "mixed",
+      "tag": "mixed-in",
       "listen": "127.0.0.1",
       "listen_port": 20122,
-      "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": true,
       "domain_strategy": "ipv4_only"
     },
     {
       "type": "http",
+      "tag": "http-in",
       "listen": "127.0.0.1",
       "listen_port": 8181,
-      "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": true,
       "domain_strategy": "ipv4_only"
     },
     {
       "type": "socks",
+      "tag": "socks-in",
       "listen": "127.0.0.1",
       "listen_port": 8080,
-      "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": true,
       "domain_strategy": "ipv4_only"
     },
     {
       "type": "tun",
-      "address": [
-        "172.19.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
+      "tag": "tun-in",
+      "interface_name": "tun0",
+      "mtu": 9000,
+      "stack": "mixed",
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126",
       "auto_route": true,
       "strict_route": true,
-      "stack": "mixed",
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 20122
-        }
-      },
       "sniff": true,
       "sniff_override_destination": true,
       "domain_strategy": "ipv4_only"
@@ -134,8 +128,8 @@
         "Connection 🇧🇬"
       ],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "3m0s",
-      "tolerance": 1
+      "interval": "3m",
+      "tolerance": 100
     },
     {
       "type": "direct",
@@ -157,11 +151,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -172,11 +164,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -187,11 +177,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -202,11 +190,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -217,11 +203,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -232,11 +216,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -247,11 +229,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -262,11 +242,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -277,11 +255,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -292,11 +268,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -307,11 +281,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -322,11 +294,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -337,11 +307,9 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     },
     {
@@ -352,53 +320,21 @@
       "username": "purevpn0d10722612",
       "password": "xYXpDIhMLKLqB5",
       "tls": {
+        "enabled": true,
         "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "stream.meet.google.com"
+        "alpn": ["h2", "http/1.1"]
       }
     }
   ],
   "route": {
     "rules": [
       {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
         "inbound": "tun-in",
-        "action": "sniff"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "inbound": "dns-in"
-          },
-          {
-            "port": 53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
-        "action": "hijack-dns"
-      },
-      {
-        "clash_mode": "proxy",
         "outbound": "proxy-selector"
-      },
-      {
-        "network": "tcp",
-        "port": 853,
-        "action": "reject"
-      },
-      {
-        "network": "udp",
-        "port": 443,
-        "action": "reject"
-      },
-      {
-        "inbound": "tun-in",
-        "action": "resolve"
       },
       {
         "ip_cidr": "10.10.34.0/24",
@@ -409,43 +345,25 @@
         "outbound": "direct"
       },
       {
-        "domain_regex": [
-          ".*\\.ir$",
-          ".*\\.xn--mgba3a4f16a$"
-        ],
+        "domain_suffix": [".ir"],
         "outbound": "direct"
       },
       {
-        "protocol": "stun",
-        "action": "reject"
-      },
-      {
-        "source_ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ],
-        "ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ],
-        "action": "reject"
+        "domain_keyword": ["google"],
+        "outbound": "proxy-selector"
       }
     ],
     "auto_detect_interface": true,
-    "override_android_vpn": true
+    "final": "proxy-selector"
   },
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "path": "cache.db",
-      "cache_id": "config",
-      "store_fakeip": true
+      "path": "cache.db"
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
-      "default_mode": "proxy",
-      "access_control_allow_origin": "https://yacd.metacubex.one",
-      "access_control_allow_private_network": true
+      "store_selected": true
     }
   }
 }
