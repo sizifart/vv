@@ -10,18 +10,18 @@
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_direct",
         "strategy": "prefer_ipv4",
-        "detour": "✨Siz-Servers"
+        "detour": "proxy"
       },
       {
         "tag": "dns_direct",
         "address": "local",
         "strategy": "prefer_ipv4",
-        "detour": "✨Siz-Servers"
+        "detour": "direct"
       },
       {
         "tag": "direct",
         "address": "tls://8.8.8.8",
-        "detour": "✨Siz-Servers"
+        "detour": "direct"
       },
       {
         "tag": "dns_block",
@@ -95,25 +95,9 @@
   "outbounds": [
     {
       "type": "selector",
-      "tag": "✨Siz-Servers",
+      "tag": "proxy-selector",
       "outbounds": [
-        "🛡SizConnectix🛡",
-        "🛡SizConnectix🛡"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "✨Siz-Servers",
-      "outbounds": [
-        "🛡SizConnectix🛡",
-        "🛡SizConnectix🛡"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "✨Siz-Servers",
-      "outbounds": [
-        "🛡SizConnectix🛡",
+        "auto-select",
         "Connection 🇹🇷",
         "Connection 🇫🇷",
         "Connection 🇵🇭",
@@ -132,7 +116,7 @@
     },
     {
       "type": "urltest",
-      "tag": "🛡SizConnectix🛡",
+      "tag": "auto-select",
       "outbounds": [
         "Connection 🇹🇷",
         "Connection 🇫🇷",
@@ -154,13 +138,16 @@
       "tolerance": 1
     },
     {
-      "type": "shadowsocks",
-      "tag": "Connection 🇹🇷",
-      "detour": "Connection 🇹🇷",
-      "server": "prox-tr.pointtoserver.com",
-      "server_port": 4776,
-      "method": "chacha20-ietf-poly1305",
-      "password": "xYXpDIhMLKLqB5"
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
     },
     {
       "type": "http",
@@ -396,8 +383,8 @@
         "action": "hijack-dns"
       },
       {
-        "clash_mode": "✨Siz-Servers",
-        "outbound": "✨Siz-Servers"
+        "clash_mode": "proxy",
+        "outbound": "proxy-selector"
       },
       {
         "network": "tcp",
@@ -415,7 +402,7 @@
       },
       {
         "ip_cidr": "10.10.34.0/24",
-        "outbound": "✨Siz-Servers"
+        "outbound": "proxy-selector"
       },
       {
         "ip_is_private": true,
@@ -451,12 +438,12 @@
     "cache_file": {
       "enabled": true,
       "path": "cache.db",
-      "cache_id": "sizconnectix",
+      "cache_id": "config",
       "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
-      "default_mode": "🛡SizConnectix🛡",
+      "default_mode": "proxy",
       "access_control_allow_origin": "https://yacd.metacubex.one",
       "access_control_allow_private_network": true
     }
