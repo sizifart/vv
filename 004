@@ -359,11 +359,15 @@
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "path": "cache.db"
+      "path": "cache.db",
+      "cache_id": "",
+      "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
-      "store_selected": true
+      "store_selected": true,
+      "access_control_allow_origin": "https://yacd.metacubex.one",
+      "access_control_allow_private_network": true
     }
   }
 }
