@@ -10,7 +10,7 @@
       "external_controller": "127.0.0.1:20123",
       "external_ui": "",
       "external_ui_download_url": "",
-      "external_ui_download_detour": "🎯 Direct",
+      "external_ui_download_detour": "direct",
       "secret": "ID_nmesx41r",
       "default_mode": "rule",
       "access_control_allow_origin": [
@@ -41,88 +41,87 @@
   "outbounds": [
     {
       "type": "selector",
-      "tag": "✨Siz-Servers",
+      "tag": "siz-servers",
       "interrupt_exist_connections": true,
       "outbounds": [
-        "📡 Auto Connection",
-        "جهت خرید به sinvt@",
-        "🔅 Connection 🇹🇷",
-        "🔅 Connection 🇵🇭",
-        "🔅 Connection 🇫🇮",
-        "🔅 Connection 🇷🇴",
-        "🔅 Connection 🇫🇷",
-        "🔅 Connection 🇸🇪",
-        "🔅 Connection 🏴",
-        "🔅 Connection 🇩🇪",
-        "🔅 Connection 🇦🇪",
-        "🔅 Connection 🇩🇿",
-        "🔅 Connection 🇦🇹",
-        "🔅 Connection 🇦🇱",
-        "🔅 Connection 🇧🇪",
-        "🔅 Connection 🇧🇬"
+        "auto-connection",
+        "buy-account",
+        "connection-tr",
+        "connection-ph",
+        "connection-fi",
+        "connection-ro",
+        "connection-fr",
+        "connection-se",
+        "connection-uk",
+        "connection-de",
+        "connection-ae",
+        "connection-dz",
+        "connection-at",
+        "connection-al",
+        "connection-be",
+        "connection-bg"
       ]
     },
     {
       "type": "urltest",
-      "tag": "📡 Auto Connection",
+      "tag": "auto-connection",
       "url": "https://www.gstatic.com/generate_204",
       "interval": "3m",
       "tolerance": 150,
       "interrupt_exist_connections": true,
       "outbounds": [
-        "جهت خرید به sinvt@",
-        "🔅 Connection 🇹🇷",
-        "🔅 Connection 🇵🇭",
-        "🔅 Connection 🇫🇮",
-        "🔅 Connection 🇷🇴",
-        "🔅 Connection 🇫🇷",
-        "🔅 Connection 🇸🇪",
-        "🔅 Connection 🏴",
-        "🔅 Connection 🇩🇪",
-        "🔅 Connection 🇦🇪",
-        "🔅 Connection 🇩🇿",
-        "🔅 Connection 🇦🇹",
-        "🔅 Connection 🇦🇱",
-        "🔅 Connection 🇧🇪",
-        "🔅 Connection 🇧🇬"
+        "buy-account",
+        "connection-tr",
+        "connection-ph",
+        "connection-fi",
+        "connection-ro",
+        "connection-fr",
+        "connection-se",
+        "connection-uk",
+        "connection-de",
+        "connection-ae",
+        "connection-dz",
+        "connection-at",
+        "connection-al",
+        "connection-be",
+        "connection-bg"
       ]
     },
     {
       "type": "direct",
-      "tag": "🎯 Direct"
+      "tag": "direct"
     },
     {
       "type": "selector",
-      "tag": "🕹 Connection Type",
+      "tag": "connection-type",
       "interrupt_exist_connections": true,
       "outbounds": [
-        "✨Siz-Servers",
-        "🎯 Direct"
+        "siz-servers",
+        "direct"
       ]
     },
     {
       "type": "selector",
-      "tag": "🔅 SIZGLOBAL",
+      "tag": "siz-global",
       "interrupt_exist_connections": true,
       "outbounds": [
-        "✨Siz-Servers",
-        "📡 Auto Connection",
-        "🎯 Direct",
-        "🕹 Connection Type"
+        "siz-servers",
+        "auto-connection",
+        "direct",
+        "connection-type"
       ]
     },
     {
       "type": "shadowsocks",
-      "tag": "جهت خرید به sinvt@",
-      "detour": "🔅 Connection 🇹🇷",
-      "server": "مادر_جنده_اسکی_دزدی_کنی",
+      "tag": "buy-account",
+      "server": "server1.example.com",
       "server_port": 4776,
       "method": "chacha20-ietf-poly1305",
-      "password": "تریاله اکانت مادر اوب 😄"
+      "password": "your-password-here"
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇹🇷",
+      "tag": "connection-tr",
       "server": "prox-tr.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -137,7 +136,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇵🇭",
+      "tag": "connection-ph",
       "server": "prox-ph.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -152,7 +151,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇫🇮",
+      "tag": "connection-fi",
       "server": "prox-fi.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -167,7 +166,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇷🇴",
+      "tag": "connection-ro",
       "server": "prox-ro.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -182,7 +181,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇫🇷",
+      "tag": "connection-fr",
       "server": "prox-fr.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -197,7 +196,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇸🇪",
+      "tag": "connection-se",
       "server": "prox-se.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -212,7 +211,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🏴",
+      "tag": "connection-uk",
       "server": "prox-is.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -227,7 +226,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇩🇪",
+      "tag": "connection-de",
       "server": "prox-de.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -242,7 +241,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇦🇪",
+      "tag": "connection-ae",
       "server": "prox-ae.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -257,7 +256,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇩🇿",
+      "tag": "connection-dz",
       "server": "prox-al.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -272,7 +271,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇦🇹",
+      "tag": "connection-at",
       "server": "prox-at.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -287,7 +286,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇦🇱",
+      "tag": "connection-al",
       "server": "prox-al.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -302,7 +301,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇧🇪",
+      "tag": "connection-be",
       "server": "prox-be.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -317,7 +316,7 @@
     },
     {
       "type": "http",
-      "tag": "🔅 Connection 🇧🇬",
+      "tag": "connection-bg",
       "server": "prox-bg.pointtoserver.com",
       "server_port": 10780,
       "username": "purevpn0d10722612",
@@ -340,12 +339,12 @@
       {
         "action": "route",
         "clash_mode": "direct",
-        "outbound": "🎯 Direct"
+        "outbound": "direct"
       },
       {
         "action": "route",
         "clash_mode": "global",
-        "outbound": "🔅 SIZGLOBAL"
+        "outbound": "siz-global"
       },
       {
         "action": "reject",
@@ -362,35 +361,35 @@
         "rule_set": [
           "GeoSite-Private"
         ],
-        "outbound": "🎯 Direct"
+        "outbound": "direct"
       },
       {
         "action": "route",
         "rule_set": [
           "GeoSite-CN"
         ],
-        "outbound": "🎯 Direct"
+        "outbound": "direct"
       },
       {
         "action": "route",
         "rule_set": [
           "GeoIP-Private"
         ],
-        "outbound": "🎯 Direct"
+        "outbound": "direct"
       },
       {
         "action": "route",
         "rule_set": [
           "GeoIP-CN"
         ],
-        "outbound": "🎯 Direct"
+        "outbound": "direct"
       },
       {
         "action": "route",
         "rule_set": [
           "GeoLocation-!CN"
         ],
-        "outbound": "✨Siz-Servers"
+        "outbound": "siz-servers"
       }
     ],
     "rule_set": [
@@ -399,46 +398,46 @@
         "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
         "format": "binary",
-        "download_detour": "🎯 Direct"
+        "download_detour": "direct"
       },
       {
         "tag": "GeoIP-Private",
         "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs",
         "format": "binary",
-        "download_detour": "🎯 Direct"
+        "download_detour": "direct"
       },
       {
         "tag": "GeoSite-Private",
         "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
         "format": "binary",
-        "download_detour": "🎯 Direct"
+        "download_detour": "direct"
       },
       {
         "tag": "GeoIP-CN",
         "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
         "format": "binary",
-        "download_detour": "🎯 Direct"
+        "download_detour": "direct"
       },
       {
         "tag": "GeoSite-CN",
         "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
         "format": "binary",
-        "download_detour": "🎯 Direct"
+        "download_detour": "direct"
       },
       {
         "tag": "GeoLocation-!CN",
         "type": "remote",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
         "format": "binary",
-        "download_detour": "🎯 Direct"
+        "download_detour": "direct"
       }
     ],
     "auto_detect_interface": true,
-    "final": "🕹 Connection Type"
+    "final": "connection-type"
   },
   "dns": {
     "servers": [
@@ -446,23 +445,23 @@
         "tag": "Local-DNS",
         "address": "https://223.5.5.5:443/dns-query",
         "address_resolver": "Local-DNS-Resolver",
-        "detour": "🎯 Direct"
+        "detour": "direct"
       },
       {
         "tag": "Local-DNS-Resolver",
         "address": "udp://223.5.5.5:53",
-        "detour": "🎯 Direct"
+        "detour": "direct"
       },
       {
         "tag": "Remote-DNS",
         "address": "tls://8.8.8.8:853",
         "address_resolver": "Remote-DNS-Resolver",
-        "detour": "✨Siz-Servers"
+        "detour": "siz-servers"
       },
       {
         "tag": "Remote-DNS-Resolver",
         "address": "udp://8.8.8.8:53",
-        "detour": "✨Siz-Servers"
+        "detour": "siz-servers"
       }
     ],
     "rules": [
